@@ -1,0 +1,11 @@
+
+TODO: Setup repository:
+./site-cookbooks
+./cookbooks
+./roles
+./clients
+  ./kirra
+    ./linux.json
+./solo.rb
+
+

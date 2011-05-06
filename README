@@ -1,11 +1,19 @@
+Chef based infrastructure built on chef-solo.
 
-TODO: Setup repository:
-./site-cookbooks
+Cookbooks go here:
 ./cookbooks
+
+Roles go here:
 ./roles
+
+Specific server requirements go per client:
 ./clients
   ./kirra
     ./linux.json
-./solo.rb
+
+A global solo.rb config since each server will use same chef file locations:
+./bootstrap/solo.rb
+
+Bootstrap a server using ./bootstrap/bootstrap.sh
 
 

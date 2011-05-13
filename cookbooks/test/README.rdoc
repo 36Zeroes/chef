@@ -1,8 +1,0 @@
-= DESCRIPTION:
-
-Runs a simple test by creating a /tmp/foobarbaz dir
-
-= REQUIREMENTS:
-
-None.
-

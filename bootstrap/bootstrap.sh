@@ -1,5 +1,7 @@
-# Run me like this:
-# wget https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sudo sh
+# Run me like this: 
+# You really do need curl -- wget doesn't like github's wildcard cert
+# sudo su
+# curl https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sh
 
 # BOOTSTRAP CHEF INSTALL
 echo 'deb http://apt.opscode.com/ lucid main' | sudo tee /etc/apt/sources.list.d/opscode.list

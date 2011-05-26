@@ -24,9 +24,9 @@ Bootstrapping will:
  * symlink /var/chef/bootstrap/solo.rb => /etc/chef/solo.rb
  * symlink /var/chef/clients => /var/chef/clients
 
-Bootstrap on server using:
+Bootstrap on server as root using:
 
-$ curl https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sh
+$ curl https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sudo sh
 
 
 

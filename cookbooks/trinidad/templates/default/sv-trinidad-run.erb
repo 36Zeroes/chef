@@ -1,4 +1,5 @@
 #!/bin/sh
 exec 2>&1
 
-exec trinidad --config /etc/trinidad/config.yaml
+# Runs ruby via a full path, then uses -S to run a gem installed binary
+exec <%= node.trinidad.ruby_path %> -S trinidad --config /etc/trinidad/config.yaml

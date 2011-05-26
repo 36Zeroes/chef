@@ -27,6 +27,9 @@ sudo apt-get install git-core -y
 echo -n "Putting 36 Zeroes chef repo at /var/chef..."
 sudo mkdir /var/chef
 sudo git clone https://36Zeroes@github.com/36Zeroes/chef.git  /var/chef
+sudo cd /var/chef
+sudo git submodule init
+sudo git submodule update
 echo "done."
 
 # Symlink the config

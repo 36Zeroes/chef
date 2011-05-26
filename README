@@ -1,19 +1,32 @@
 Chef based infrastructure built on chef-solo.
 
 Cookbooks go here:
+
 ./cookbooks
 
 Roles go here:
+
 ./roles
 
 Specific server requirements go per client:
+
 ./clients
   ./kirra
-    ./linux.json
+    ./reporting.json
 
-A global solo.rb config since each server will use same chef file locations:
-./bootstrap/solo.rb
+A global solo.rb config since each server will use same chef file locations.
 
-Bootstrap a server using ./bootstrap/bootstrap.sh
+Bootstrapping will:
+
+ * add opscode repositories & install chef
+ * disable chef-client (or it'll try and poll a server -- we're only using chef-solo)
+ * install git & checkout this whole repo to /var/chef
+ * symlink /var/chef/bootstrap/solo.rb => /etc/chef/solo.rb
+ * symlink /var/chef/clients => /var/chef/clients
+
+Bootstrap on server using:
+
+$ curl https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sh
+
 
 

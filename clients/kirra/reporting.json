@@ -1,0 +1,11 @@
+{
+  "rvm": {
+    "rubies": "jruby-1.6.2",
+    "default_ruby": "jruby-1.6.2"  // system will be from apt-get
+  },
+  "run_list": [ 
+    "recipe[java::default]",
+    "recipe[chef-rvm::default]",
+    "recipe[trinidad::default]"
+  ] 
+}

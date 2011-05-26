@@ -1,44 +1,53 @@
 # Run me like this: 
 # You really do need curl -- wget doesn't like github's wildcard cert
-# sudo su
+#  su
 # curl https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sh
+
+echo "Switching to root..."
+sudo su
 
 # BOOTSTRAP CHEF INSTALL
 echo "Adding opscode repository..."
-echo 'deb http://apt.opscode.com/ lucid main' | sudo tee /etc/apt/sources.list.d/opscode.list
-wget -qO - http://apt.opscode.com/packages@opscode.com.gpg.key | sudo apt-key add -
+echo 'deb http://apt.opscode.com/ lucid main' |  tee /etc/apt/sources.list.d/opscode.list
+wget -qO - http://apt.opscode.com/packages@opscode.com.gpg.key |  apt-key add -
+
 
 echo "Updating package list.."
-sudo apt-get update
+apt-get update
 
 echo "Installing chef.."
-sudo apt-get install chef -y
+apt-get install chef -y
 echo "done."
 echo ""
 
 # Disable chef-client running, coze we do chef-solo
-echo -n "Disabling chef-client as chef-solo is all thats used..."
-sudo service chef-client stop
-sudo update-rc.d chef-client disable
+echo "Stopping chef-client as chef-solo is all thats used..."
+service chef-client stop
+echo "Disabling chef-client from boot..."
+update-rc.d chef-client disable
 echo "done."
+echo ""
 
 # CHECKOUT COOKBOOKS from 36Zeroes Chef
-sudo apt-get install git-core -y
-echo -n "Putting 36 Zeroes chef repo at /var/chef..."
-sudo mkdir /var/chef
-sudo git clone https://36Zeroes@github.com/36Zeroes/chef.git  /var/chef
-sudo git submodule init /var/chef
-sudo git submodule update /var/chef
+apt-get install git-core -y
+echo "Putting 36 Zeroes chef repo at /var/chef..."
+mkdir /var/chef
+git clone https://36Zeroes@github.com/36Zeroes/chef.git /var/chef
+cd /var/chef
+git submodule init
+git submodule update
 echo "done."
+echo ""
 
 # Symlink the config
-sudo ln -s /var/chef/bootstrap/solo.rb /etc/chef/solo.rb
+ ln -s /var/chef/bootstrap/solo.rb /etc/chef/solo.rb
 echo "Linked /etc/chef/solo.rb -> /var/chef/bootstrap/solo.rb"
-sudo ln -s /var/chef/clients /etc/chef/clients
+ ln -s /var/chef/clients /etc/chef/clients
 echo "Linked /etc/chef/clients/ -> /var/chef/clients/"
+echo ""
 
 # Run bootstrap chef-solo
 echo "To run, use your client node name, like so:"
-echo "sudo chef-solo -j /etc/chef/clients/kirra/reporting.json"
+echo " chef-solo -j /etc/chef/clients/kirra/reporting.json"
 
 

@@ -1,10 +1,5 @@
-# Run me like this: 
-# You really do need curl -- wget doesn't like github's wildcard cert
-#  su
-# curl https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sh
-
-echo "Switching to root..."
-sudo su
+# Run me like this (you really do need curl -- wget doesn't like github's wildcard cert)_
+# curl https://github.com/36Zeroes/chef/raw/master/bootstrap/bootstrap.sh | sudo sh
 
 # BOOTSTRAP CHEF INSTALL
 echo "Adding opscode repository..."

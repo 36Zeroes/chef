@@ -6,7 +6,7 @@ gem_package "trinidad" do
 end
 
 template "/etc/trinidad/config.yaml" do
-  source 'config.yml.erb'
+  source 'config.yaml.erb'
   owner "root"
   group "root"
   mode 0644

@@ -1,11 +1,14 @@
 {
   "rvm": {
     "rubies": "jruby-1.6.2",
-    "default_ruby": "jruby-1.6.2"  // system will be from apt-get
+    "default_ruby": "system",  // system will be from apt-get
+    "gem_package": {"rvm_string": "jruby-1.6.2"} // to use now
   },
   "run_list": [ 
     "recipe[java::default]",
-    "recipe[chef-rvm::default]",
+    "recipe[rvm:gem_package]",  // patches gem_package to use Chef::Provider::Package::RVMRubygems
+                                // set rvm/gem_package/rvm_string to required ruby
+    "recipe[rvm::default]",
     "recipe[trinidad::default]"
   ] 
 }

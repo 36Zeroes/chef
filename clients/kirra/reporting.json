@@ -6,7 +6,7 @@
   },
   "run_list": [ 
     "recipe[java::default]",
-    "recipe[rvm:gem_package]",  // patches gem_package to use Chef::Provider::Package::RVMRubygems
+    "recipe[rvm::gem_package]",  // patches gem_package to use Chef::Provider::Package::RVMRubygems
                                 // set rvm/gem_package/rvm_string to required ruby
     "recipe[rvm::default]",
     "recipe[trinidad::default]"

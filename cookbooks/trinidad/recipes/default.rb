@@ -5,11 +5,11 @@ gem_package "trinidad" do
   action :install
 end
 
-directory "/etc/trinidad/config.yaml" do
-  recursive true
+template "/etc/trinidad/config.yaml" do
+  source 'config.yml'
   owner "root"
   group "root"
-  mode 0755
+  mode 0644
 end
 
 runit_service "trinidad"

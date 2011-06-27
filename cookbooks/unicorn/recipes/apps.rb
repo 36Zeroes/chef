@@ -22,16 +22,16 @@ node[:active_applications].each do |name, config|
     :use_bundler => false
   })
   
-  config = defaults.merge(Mash.new(node[:applications][name])).merge(config)
-  
+  config_with_defaults = defaults.merge(config)
+  puts "It's: #{config_with_defaults.inspect}"
   runit_service "unicorn-#{name}" do
     template_name "unicorn"
     cookbook "unicorn"
-    options config
+    options config_with_defaults
   end
     
   service "unicorn-#{name}" do
-    action config[:enable] ? [:enable, :start] : [:disable, :stop]
+    action config_with_defaults[:enable] ? [:enable, :start] : [:disable, :stop]
   end
 
   counter += 1

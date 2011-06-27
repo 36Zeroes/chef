@@ -13,14 +13,12 @@
     
     "recipe[redis::default]",
     "recipe[trinidad::default]", // Tour reporter server
+    "recipe[unicorn::default]",       // QT server
     "recipe[unicorn::apps]"       // QT server
   ],
 
   "active_applications": {
    "quicktravel": {"enable": true}
-  },
-  "applications": {
-    "quicktravel": {}
   },
 
   "unicorn": {

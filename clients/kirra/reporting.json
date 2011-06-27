@@ -4,6 +4,7 @@
     "default_ruby": "system",  // system will be from apt-get
     "gem_package": {"rvm_string": "jruby-1.6.2"} // to use now
   },
+  
   "run_list": [ 
     "recipe[java::default]",
     "recipe[rvm::gem_package]",  // patches gem_package to use Chef::Provider::Package::RVMRubygems
@@ -13,15 +14,15 @@
   ],
 
   "active_applications": {
-   'quicktravel': {'enable': true}
+   "quicktravel": {"enable": true}
   },
 
   "unicorn": {
-    "worker_count":6, "timeout": 120, 'ruby_string': 'ruby-1.9.2'
+    "worker_count":6, "timeout": 120, "ruby_string": "ruby-1.9.2"
   },
   
   "trinidad": {
-    "ruby_string": 'jruby-1.6.2'
+    "ruby_string": "jruby-1.6.2"
   }
 }
 

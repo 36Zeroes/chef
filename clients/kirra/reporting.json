@@ -10,7 +10,10 @@
     "recipe[rvm::gem_package]",  // patches gem_package to use Chef::Provider::Package::RVMRubygems
                                 // set rvm/gem_package/rvm_string to required ruby
     "recipe[rvm::default]",
-    "recipe[trinidad::default]"
+    
+    "recipe[redis::default]",
+    "recipe[trinidad::default]", // Tour reporter server
+    "recipe[unicorn::app]"       // QT server
   ],
 
   "active_applications": {

@@ -22,7 +22,7 @@ node[:active_applications].each do |name, config|
     :use_bundler => false
   })
   
-  config = defaults.merge(Mash.new(node[:applications][name]))
+  config = defaults.merge(Mash.new(node[:applications][name])).merge(config)
   
   runit_service "unicorn-#{name}" do
     template_name "unicorn"

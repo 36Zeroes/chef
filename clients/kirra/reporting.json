@@ -19,6 +19,9 @@
   "active_applications": {
    "quicktravel": {"enable": true}
   },
+  "applications": {
+    "quicktravel": {}
+  },
 
   "unicorn": {
     "worker_count":6, "timeout": 120, "ruby_string": "ruby-1.9.2"

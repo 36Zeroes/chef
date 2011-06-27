@@ -2,5 +2,5 @@
 	path = cookbooks/rvm
 	url = https://github.com/adz/chef-rvm.git
 [submodule "cookbooks/redis-cookbook"]
-	path = cookbooks/redis-cookbook
+	path = cookbooks/redis
 	url = https://github.com/papercavalier/redis-cookbook

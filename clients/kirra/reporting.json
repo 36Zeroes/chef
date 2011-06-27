@@ -1,6 +1,6 @@
 {
   "rvm": {
-    "rubies": "jruby-1.6.2",
+    "rubies": ["jruby-1.6.2", "ruby-1.9.2"],
     "default_ruby": "system",  // system will be from apt-get
     "gem_package": {"rvm_string": "jruby-1.6.2"} // to use now
   },
@@ -10,5 +10,18 @@
                                 // set rvm/gem_package/rvm_string to required ruby
     "recipe[rvm::default]",
     "recipe[trinidad::default]"
-  ] 
+  ],
+
+  "active_applications": {
+   'quicktravel': {'enable': true}
+  },
+
+  "unicorn": {
+    "worker_count":6, "timeout": 120, 'ruby_string': 'ruby-1.9.2'
+  },
+  
+  "trinidad": {
+    "ruby_string": 'jruby-1.6.2'
+  }
 }
+

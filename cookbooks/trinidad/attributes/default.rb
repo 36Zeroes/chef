@@ -3,6 +3,6 @@
 # Attributes:: default
 #
 
-# Ruby path
-set["trinidad"]["ruby_path"] = "/usr/local/rvm/rubies/jruby-1.6.2/bin/ruby"
+# Which jRuby via 'rvm' string (can include gemsets..)
+set["trinidad"]["rvm_string"] = "jruby-1.6.2"
 set["trinidad"]["ruby_string"] = "jruby-1.6.2"

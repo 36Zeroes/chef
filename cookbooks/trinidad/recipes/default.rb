@@ -1,7 +1,8 @@
 include_recipe "runit"
 include_recipe 'java'
 
-gem_package "trinidad" do
+rvm_gem "trinidad" do
+  ruby_string node['trinidad']['ruby_string']
   action :install
 end
 

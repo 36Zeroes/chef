@@ -14,7 +14,7 @@ node[:active_applications].each do |name, config|
     :worker_bind_address => '127.0.0.1',
     :worker_bind_base_port => "37#{counter}01",
     :debug => false,
-    :binary_path => "/usr/local/rvm/bin/boot_unicorn",
+    :binary_path => "#{node.rvm.root_path}/bin/boot_unicorn",
     :env => 'production',
     :app_root => app_root,
     :enable => true,

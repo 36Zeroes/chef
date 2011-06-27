@@ -1,3 +1,6 @@
+include_recipe "runit"
+include_recipe 'rvm'
+
 counter = 0
 
 node[:active_applications].each do |name, config|

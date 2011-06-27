@@ -13,7 +13,7 @@
     
     "recipe[redis::default]",
     "recipe[trinidad::default]", // Tour reporter server
-    "recipe[unicorn::app]"       // QT server
+    "recipe[unicorn::apps]"       // QT server
   ],
 
   "active_applications": {

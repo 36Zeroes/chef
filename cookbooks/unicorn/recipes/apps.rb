@@ -23,16 +23,25 @@ node[:active_applications].each do |name, config|
   })
   
   config_with_defaults = defaults.merge(config)
-  puts "It's: #{config_with_defaults.inspect}"
   runit_service "unicorn-#{name}" do
     template_name "unicorn"
     cookbook "unicorn"
     options config_with_defaults
   end
-    
-  service "unicorn-#{name}" do
-    action config_with_defaults[:enable] ? [:enable, :start] : [:disable, :stop]
-  end
+
+# ODDITY: #runit_service will call #service but override core parts...
+#   -- it'll use default provider (not your OS one)
+#   -- it'll re-define start/stop and related using runsv's 'sv' cmd
+#   -- it'll subscribe to changes of './run' with a restart
+#   
+#  => The problem is that after that, using #service for the same name
+#     will not use OS provider either, so no :enable is defined 
+#     
+#  => Which in turnmeans we can't enable at boot...
+#     
+#  service "unicorn-#{name}" do
+#    action config_with_defaults[:enable] ? [:enable, :start] : [:disable, :stop]
+#  end
 
   counter += 1
 end

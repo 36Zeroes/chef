@@ -8,13 +8,15 @@
   "run_list": [ 
     "recipe[java::default]",
     "recipe[rvm::gem_package]",  // patches gem_package to use Chef::Provider::Package::RVMRubygems
-                                // set rvm/gem_package/rvm_string to required ruby
+                                 // set rvm/gem_package/rvm_string to required ruby
     "recipe[rvm::default]",
     
     "recipe[redis::default]",
+    
     "recipe[trinidad::default]", // Tour reporter server
-    "recipe[unicorn::default]",       // QT server
-    "recipe[unicorn::apps]"       // QT server
+    "recipe[unicorn::default]",  // RT server
+    "recipe[unicorn::apps]",     // RT server
+    
     "recipe[elasticsearch::default]"
   ],
 

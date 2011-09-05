@@ -15,6 +15,7 @@
     "recipe[trinidad::default]", // Tour reporter server
     "recipe[unicorn::default]",       // QT server
     "recipe[unicorn::apps]"       // QT server
+    "recipe[elasticsearch::default]"
   ],
 
   "active_applications": {

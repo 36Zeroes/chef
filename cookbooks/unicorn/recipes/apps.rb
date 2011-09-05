@@ -28,7 +28,16 @@ node[:active_applications].each do |name, config|
     cookbook "unicorn"
     options config_with_defaults
   end
-
+  
+  
+  logrotate_app "#{name}" do
+    cookbook "logrotate"
+    path "#{app_root}/current/log/*.log"
+    frequency "daily"
+    rotate 30
+  end
+  
+  
 # ODDITY: #runit_service will call #service but override core parts...
 #   -- it'll use default provider (not your OS one)
 #   -- it'll re-define start/stop and related using runsv's 'sv' cmd

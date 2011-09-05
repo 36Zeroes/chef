@@ -21,7 +21,7 @@
   ],
 
   "active_applications": {
-   "quicktravel": {"enable": true}
+   "ResTracker": {"enable": true}
   },
 
   "unicorn": {

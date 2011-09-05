@@ -12,6 +12,8 @@ path:
 cluster:
   name: <%= @node[:elasticsearch][:cluster_name] %>
 
+<% if !@node[:elasticsearch][:seeds].nil? %>
+# Unicast Discovery (disable multicast -- good for incloud where multicast is disabled)
 discovery:
   zen:
     ping:
@@ -19,7 +21,9 @@ discovery:
         enabled: false
       unicast:
         hosts: <%= @node[:elasticsearch][:seeds].collect { |e| "#{e}[9300-9400]" }.join(",") %>
-
+<% end %>
+        
+        
 gateway:
 <% if @aws && @node[:elasticsearch][:s3_gateway_bucket]-%>
   type: cloud

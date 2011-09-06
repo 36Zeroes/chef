@@ -14,7 +14,10 @@ node[:active_applications].each do |name, config|
     :worker_bind_address => '127.0.0.1',
     :worker_bind_base_port => "37#{counter}01",
     :debug => false,
-    :binary_path => "#{node.rvm.root_path}/bin/boot_unicorn",
+    
+    # Use bundler to handle gem dependencies
+    :binary_path => "#{node.rvm.root_path}/bin/do_bundle exec unicorn_rails",
+    
     :env => 'production',
     :app_root => app_root,
     :enable => true,

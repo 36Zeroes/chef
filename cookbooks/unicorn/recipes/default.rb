@@ -3,10 +3,10 @@ rvm_gem "unicorn" do
   version node[:unicorn][:version]
 end
 
-
-rvm_wrapper "boot" do # create /usr/local/rvm/bin/boot_unicorn
-  ruby_string   node.unicorn.ruby_string
-  binary        "unicorn"
+# Wrap bundler
+rvm_wrapper "do" do
+  ruby_string node.unicorn.ruby_string
+  binary "bundle"
 end
 
 cookbook_file "/usr/local/bin/unicornctl" do

@@ -21,7 +21,8 @@
   ],
 
   "active_applications": {
-   "ResTracker": {"enable": true}
+   "ResTracker": {"enable": true},
+   "tour_reporter": {"enable": true}
   },
 
   "unicorn": {

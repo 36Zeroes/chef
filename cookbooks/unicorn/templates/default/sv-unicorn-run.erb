@@ -1,4 +1,4 @@
 #!/bin/sh
 exec 2>&1
 cd <%= @options[:app_root] %>/current
-exec chpst -u capistrano:capistrano <%= @options[:binary_path] %> -E <%= @options[:env] %> -c <%= @options[:config_path] %> <%= "-d" if @options[:debug] %> > <%= @options[:app_root] %>/shared/log/unicorn.log 2>&1
+exec chpst -u <%= @options[:run_as] %> <%= @options[:binary_path] %> -E <%= @options[:env] %> -c <%= @options[:config_path] %> <%= "-d" if @options[:debug] %> > <%= @options[:app_root] %>/shared/log/unicorn.log 2>&1

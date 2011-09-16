@@ -14,20 +14,21 @@
     "recipe[redis::default]",
     
     "recipe[trinidad::default]", // Tour reporter server
-    "recipe[unicorn::default]",  // RT server
+    "recipe[unicorn::default]",  // Install unicorn
     "recipe[unicorn::apps]",     // RT server
+    "recipe[resque_worker::default]",
     
     "recipe[elasticsearch::default]"
   ],
 
   "active_applications": {
-   "ResTracker": {"enable": true},
+   "ResTracker": {"enable": true, "resque_workers": true},
    "tour_reporter": {"enable": true}
   },
 
   "unicorn": {
     "worker_count":6, "timeout": 120, "ruby_string": "ruby-1.9.2"
-  },
+  },  
   
   "trinidad": {
     "ruby_string": "jruby-1.6.2"

@@ -29,6 +29,7 @@ node[:active_applications].each do |name, config|
   runit_service "resque-#{name}" do
     template_name "resque"
     cookbook "resque_worker"
+    env config_with_defaults[:env]
     options config_with_defaults
   end
 end

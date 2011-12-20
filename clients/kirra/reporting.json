@@ -17,8 +17,8 @@
     "recipe[unicorn::default]",  // Install unicorn
     "recipe[unicorn::apps]",     // RT server
     "recipe[resque_worker::default]",
-    
     "recipe[elasticsearch::default]"
+    "recipe[nginx::default]", // NginX web server
   ],
 
   "active_applications": {
@@ -27,8 +27,10 @@
   },
 
   "unicorn": {
-    "worker_count":6, "timeout": 120, "ruby_string": "ruby-1.9.2"
-  },  
+    "worker_count":6, 
+    "timeout": 120,
+    "ruby_string": "ruby-1.9.2"
+  },
   
   "trinidad": {
     "ruby_string": "jruby-1.6.2"
@@ -38,5 +40,13 @@
     "cluster_name": "RT_production",
     "heap_size": 512
   }  
+
+  "nginx": {
+    "root": "/var/www/ResTracker/current/public",
+    "upstream": {
+      "name": "unicorn_server",
+      "socket": "unix:/tmp/ResTracker.sock"
+    }
+  }
 }
 

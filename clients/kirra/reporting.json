@@ -17,8 +17,8 @@
     "recipe[unicorn::default]",  // Install unicorn
     "recipe[unicorn::apps]",     // RT server
     "recipe[resque_worker::default]",
-    "recipe[elasticsearch::default]"
-    "recipe[nginx::default]", // NginX web server
+    "recipe[elasticsearch::default]",
+    "recipe[nginx::source]" // NginX web server
   ],
 
   "active_applications": {
@@ -39,7 +39,7 @@
   "elasticsearch": {
     "cluster_name": "RT_production",
     "heap_size": 512
-  }  
+  },
 
   "nginx": {
     "root": "/var/www/ResTracker/current/public",

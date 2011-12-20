@@ -1,0 +1,32 @@
+<% if node[:nginx][:upstream] %>
+  upstream <%= node[:nginx][:upstream][:name]%>  {
+   # This is the socket we configured in unicorn.rb
+   server <%= node[:nginx][:upstream][:socket]%>
+   fail_timeout=0;
+  }
+<% end %>
+
+server {
+  listen   80;
+  server_name  <%= node[:hostname] || '_'%>;
+
+  access_log  <%= node[:nginx][:log_dir] %>/localhost.access.log;
+  root   <%= node[:nginx][:root_dir] %>;
+
+  location / {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+
+    <% if node[:nginx][:upstream] %>
+      # If you don't find the filename in the static files
+      # Then request it from the unicorn server
+      if (!-f $request_filename) {
+        proxy_pass http://<%= node[:nginx][:upstream][:name]%>;
+        break;
+      }
+    <% end %>
+
+    index  index.html index.htm;
+  }
+}

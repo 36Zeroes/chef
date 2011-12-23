@@ -15,7 +15,7 @@
     "recipe[resque_worker::default]",
     "recipe[elasticsearch::default]",
     "recipe[nginx::source]", // NginX web server
-    "recipe[mysql::server_ec2]"
+    "recipe[mysql::server]"
   ],
 
   "active_applications": {

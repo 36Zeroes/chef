@@ -38,6 +38,7 @@
   },
 
   "nginx": {
+    "root_dir": "/var/www/ResTracker/current/public",
     "root": "/var/www/ResTracker/current/public",
     "upstream": {
       "name": "unicorn_server",

@@ -136,7 +136,7 @@ end
 
 template "default-site.conf" do
   path "#{node[:nginx][:dir]}/sites-enabled/default-site.conf"
-  source "default-site.conf.erb"
+  source "default-site.erb"
   owner "root"
   group "root"
   mode "0644"

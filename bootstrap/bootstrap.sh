@@ -11,7 +11,7 @@ echo "Updating package list.."
   apt-get update
 
 echo "Installing chef.."
-  apt-get install chef -y
+  apt-get install chef --force-yes -y
 echo "done."
 echo ""
 
@@ -24,7 +24,7 @@ echo "done."
 echo ""
 
 # CHECKOUT COOKBOOKS from 36Zeroes Chef
-  apt-get install git-core -y
+  apt-get install git-core --force-yes -y
 echo "Putting 36 Zeroes chef repo at /var/chef..."
   mkdir /var/chef
   git clone https://36Zeroes@github.com/36Zeroes/chef.git /var/chef

@@ -1,6 +1,6 @@
 {
   "rvm": {
-    "rubies": ["jruby-1.6.2", "ruby-1.9.2"],
+    "rubies": ["ruby-1.9.2"],
     "default_ruby": "system",  // system will be from apt-get
     "gem_package": {"rvm_string": "jruby-1.6.2"} // to use now
   },
@@ -14,7 +14,8 @@
     "recipe[unicorn::apps]",     // RT server
     "recipe[resque_worker::default]",
     "recipe[elasticsearch::default]",
-    "recipe[nginx::source]" // NginX web server
+    "recipe[nginx::source]", // NginX web server
+    "recipe[mysql::server_ec2]"
   ],
 
   "active_applications": {
@@ -39,7 +40,6 @@
 
   "nginx": {
     "root_dir": "/var/www/ResTracker/current/public",
-    "root": "/var/www/ResTracker/current/public",
     "upstream": {
       "name": "unicorn_server",
       "socket": "unix:/tmp/ResTracker.sock"

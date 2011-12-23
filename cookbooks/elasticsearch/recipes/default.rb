@@ -75,23 +75,23 @@ link "/usr/lib/elasticsearch" do
 end
 
 aws = nil
-if node[:ec2]
-  aws = data_bag_item('aws', 'main')
-
-  directory "/mnt/elasticsearch" do
-    owner "elasticsearch"
-    group "nogroup"
-    mode 0755
-  end
-
-  # put lib dir on /mnt
-  mount "/var/lib/elasticsearch" do
-    device "/mnt/elasticsearch"
-    fstype "none"
-    options "bind,rw"
-    action :mount
-  end
-end
+#if node[:ec2]
+#  aws = data_bag_item('aws', 'main')
+#
+#  directory "/mnt/elasticsearch" do
+#    owner "elasticsearch"
+#    group "nogroup"
+#    mode 0755
+#  end
+#
+#  # put lib dir on /mnt
+#  mount "/var/lib/elasticsearch" do
+#    device "/mnt/elasticsearch"
+#    fstype "none"
+#    options "bind,rw"
+#    action :mount
+#  end
+#end
 
 bash "copy elasticsearch conf" do
   user "root"

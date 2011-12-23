@@ -134,6 +134,15 @@ template "nginx.conf" do
   notifies :restart, resources(:service => "nginx"), :immediately
 end
 
+template "default-site.conf" do
+  path "#{node[:nginx][:dir]}/sites-enabled/default-site.conf"
+  source "default-site.conf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :restart, resources(:service => "nginx"), :immediately
+end
+
 cookbook_file "#{node[:nginx][:dir]}/mime.types" do
   source "mime.types"
   owner "root"

@@ -1,0 +1,13 @@
+{
+  "name": "zint",
+  "description": "Installs zint",
+  "long_description": "",
+  "maintainer": "36 Zeroes",
+  "maintainer_email": "anuj@36zeroes.com.au",
+  "license": "Apache 2.0",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "version": "2.3.0"
+}

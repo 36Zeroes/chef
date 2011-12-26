@@ -15,6 +15,11 @@ echo "Installing chef.."
 echo "done."
 echo ""
 
+echo "Installing base libraries"
+  apt-get install imagemagick pdftk --force-yes -y
+echo "done."
+echo ""
+
 # Disable chef-client running, coz we do chef-solo
 echo "Stopping chef-client as chef-solo is all thats used..."
   service chef-client stop

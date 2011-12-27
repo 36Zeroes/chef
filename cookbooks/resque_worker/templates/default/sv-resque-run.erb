@@ -1,4 +1,4 @@
 #!/bin/sh
 exec  2>&1  > <%= @options[:app_root] %>/shared/log/resque_workers.log
 cd <%= @options[:app_root] %>/current
-exec chpst -u <%= @options[:run_as] %> <%= @options[:bundler_path]%> exec rake resque:work
+exec chpst -u <%= @options[:run_as] %> <%= @options[:bundler_path]%> exec rake RAILS_ENV=production QUEUE=* resque:work

@@ -16,7 +16,8 @@
     "recipe[elasticsearch::default]",
     "recipe[nginx::source]", // NginX web server
     "recipe[mysql::server]",
-    "recipe[zint::source]"
+    "recipe[zint::source]",
+    "recipe[automysqlbackup::default]"
   ],
 
   "active_applications": {

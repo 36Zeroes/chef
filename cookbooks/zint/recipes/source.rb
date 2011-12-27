@@ -36,10 +36,10 @@ remote_file "/tmp/zint-#{zint_version}.src.tar.gz" do
   action :create_if_missing
 end
 
-bash "compile_nginx_source" do
+bash "compile_zint_source" do
   cwd "/tmp"
   code <<-EOH
-    tar zxf zint-#{nginx_version}.tar.gz
+    tar zxf zint-#{zint_version}.tar.gz
     cd zint-#{zint_version} && cmake .
     make install
   EOH

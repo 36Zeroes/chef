@@ -17,7 +17,8 @@
     "recipe[nginx::source]", // NginX web server
     "recipe[mysql::server]",
     "recipe[zint::source]",
-    "recipe[automysqlbackup::default]"
+    "recipe[automysqlbackup::default]",
+    "recipe[wkhtmltopdf::install]"
   ],
 
   "active_applications": {

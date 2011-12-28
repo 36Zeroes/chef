@@ -16,9 +16,9 @@ end
 
 execute "permissions-for-backup-user" do
   grant_select = "GRANT SELECT, LOCK TABLES ON *.* TO '#{node[:automysqlbackup][:mysql_user]}'@'localhost' IDENTIFIED BY '#{node[:automysqlbackup][:mysql_password]}'"
-  command "/usr/bin/mysql -u root #{node[:mysql][:server_root_password].empty? ? '' : '-p' }#{node[:mysql][:server_root_password]} -e \"#{grant_select}\""
-  action :run
-  not_if "/usr/bin/mysql -u #{node[:automysqlbackup][:mysql_user]} -p#{node[:automysqlbackup][:mysql_password]} -e 'show databases;'"
+  command "/usr/bin/mysql -u root #{node[:mysql][:server_root_password] ? '' : '-p' }#{node[:mysql][:server_root_password]} -e \"#{grant_select}\""
+  action :nothing
+  subscribes :run, resources("template[/etc/automysqlbackup/automysqlbackup.conf]"), :immediately
 end
 
 directory "/etc/automysqlbackup" do
@@ -33,5 +33,6 @@ template "/etc/automysqlbackup/automysqlbackup.conf" do
   owner "root"
   group "root"
   source "automysqlbackup.conf.erb"
+  action :create_if_missing
 end
 

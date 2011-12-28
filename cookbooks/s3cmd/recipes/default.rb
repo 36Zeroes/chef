@@ -7,7 +7,9 @@
 
 apt_repo "s3tools" do
   url "http://s3tools.org/repo/deb-all"
+  distribution ""
   components ["stable/"]
+  key_id  "C762B6E6"
   key_url "http://s3tools.org/repo/deb-all/stable/s3tools.key"
   key_package "s3cmd"
   notifies :run, "execute[apt-get update]", :immediately

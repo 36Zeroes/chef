@@ -5,21 +5,14 @@
 
 #install s3cmd
 
-apt_repository "s3cmd" do
-  uri "http://s3tools.org/repo/deb-all"
+apt_repo "s3tools" do
+  url "http://s3tools.org/repo/deb-all"
   components ["stable/"]
-  key "http://s3tools.org/repo/deb-all/stable/s3tools.key"
-  action :add
+  key_url "http://s3tools.org/repo/deb-all/stable/s3tools.key"
+  key_package "s3cmd"
   notifies :run, "execute[apt-get update]", :immediately
 end
 
-execute "apt-get update" do
-  action :nothing
-end
-
-package "s3cmd" do 
-  action :upgrade
-end
 
 #deploy configuration for each user. Change s3cfg.erb template in your site cookbook to set 
 #you access key and secret. 

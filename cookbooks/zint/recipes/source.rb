@@ -43,5 +43,6 @@ bash "compile_zint_source" do
     cd zint-#{zint_version} && cmake .
     make install
   EOH
+  creates node[:zint][:src_binary]
 end
 

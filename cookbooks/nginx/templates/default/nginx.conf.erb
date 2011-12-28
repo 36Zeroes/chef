@@ -27,6 +27,11 @@ http {
   keepalive_timeout  <%= node[:nginx][:keepalive_timeout] %>;
   <% end %>
 
+  <% if node[:nginx][:ssl] == "on" %>
+    ssl_session_cache    shared:SSL:10m;
+    ssl_session_timeout  10m;
+  <% end %>
+
   gzip  <%= node[:nginx][:gzip] %>;
   <% if node[:nginx][:gzip] == "on" %>
   gzip_http_version <%= node[:nginx][:gzip_http_version] %>;

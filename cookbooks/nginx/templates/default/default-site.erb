@@ -7,11 +7,33 @@
 <% end %>
 
 server {
-  listen   80;
+  <% if node[:nginx][:ssl] == "on" %>
+    listen 443;
+    keepalive_timeout    70;
+    ssl                  on;
+    ssl_certificate      <%= node[:nginx][:ssl_cert_path] %> ;
+    ssl_certificate_key  <%= node[:nginx][:ssl_key_path] %>;
+    ssl_protocols        SSLv3 TLSv1;
+    ssl_ciphers          HIGH:!aNULL:!MD5;
+  <% else %>
+    listen   80;
+  <% end %>
+
   server_name  <%= node[:hostname] || '_'%>;
 
   access_log  <%= node[:nginx][:log_dir] %>/localhost.access.log;
   root   <%= node[:nginx][:root_dir] %>;
+
+  location ~ ^/(assets|images|javascripts|stylesheets|swfs|system)/ {
+      gzip_static on;
+      expires max;
+      add_header Cache-Control public;
+  }
+
+  location = /favicon.ico {
+    expires max;
+    add_header Cache-Control public;
+  }
 
   location / {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

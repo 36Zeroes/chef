@@ -135,7 +135,11 @@ template "nginx.conf" do
 end
 
 template "default-site.conf" do
-  path "#{node[:nginx][:dir]}/sites-enabled/default-site.conf"
+  if node[:nginx][:ssl] == "on"
+    path "#{node[:nginx][:dir]}/sites-enabled/secure-site.conf"
+  else
+    path "#{node[:nginx][:dir]}/sites-enabled/default-site.conf"
+  end
   source "default-site.erb"
   owner "root"
   group "root"

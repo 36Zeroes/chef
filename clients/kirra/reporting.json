@@ -46,7 +46,10 @@
     "upstream": {
       "name": "unicorn_server",
       "socket": "unix:/tmp/ResTracker.sock"
-    }
+    },
+    "ssl": "on",
+    "ssl_cert_path": "/etc/nginx/cert/server.crt",
+    "ssl_key_path" : "/etc/nginx/cert/server.key"
   }
 }
 

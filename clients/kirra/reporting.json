@@ -18,7 +18,8 @@
     "recipe[mysql::server]",
     "recipe[zint::source]",
     "recipe[automysqlbackup::default]",
-    "recipe[wkhtmltopdf::install]"
+    "recipe[wkhtmltopdf::install]",
+    "recipe[s3cmd::default]"
   ],
 
   "active_applications": {

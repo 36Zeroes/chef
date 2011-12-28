@@ -1,0 +1,3 @@
+#!/bin/bash
+#
+s3cmd sync --skip-existing --delete-removed <%= node[:s3cmd][:backup_directory]%>  s3://<%= node[:s3cmd][:bucket_name]%>/

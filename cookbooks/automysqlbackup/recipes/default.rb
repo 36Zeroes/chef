@@ -14,6 +14,14 @@ cron "automysqlbackup" do
   command "/usr/local/sbin/automysqlbackup.sh"
 end
 
+template "/etc/automysqlbackup/automysqlbackup.conf" do
+  mode "0600"
+  owner "root"
+  group "root"
+  source "automysqlbackup.conf.erb"
+  action :create_if_missing
+end
+
 execute "permissions-for-backup-user" do
   grant_select = "GRANT SELECT, LOCK TABLES ON *.* TO '#{node[:automysqlbackup][:mysql_user]}'@'localhost' IDENTIFIED BY '#{node[:automysqlbackup][:mysql_password]}'"
   command "/usr/bin/mysql -u root #{node[:mysql][:server_root_password] ? '' : '-p' }#{node[:mysql][:server_root_password]} -e \"#{grant_select}\""
@@ -26,13 +34,5 @@ directory "/etc/automysqlbackup" do
   group "root"
   mode "0700"
   action :create
-end
-
-template "/etc/automysqlbackup/automysqlbackup.conf" do
-  mode "0600"
-  owner "root"
-  group "root"
-  source "automysqlbackup.conf.erb"
-  action :create_if_missing
 end
 

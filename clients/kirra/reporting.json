@@ -19,7 +19,8 @@
     "recipe[zint::source]",
     "recipe[automysqlbackup::default]",
     "recipe[wkhtmltopdf::install]",
-    "recipe[s3cmd::default]"
+    "recipe[s3cmd::default]",
+    "recipe[timezone::default]"
   ],
 
   "active_applications": {
@@ -51,6 +52,8 @@
     "ssl": "on",
     "ssl_cert_path": "/etc/nginx/cert/server.crt",
     "ssl_key_path" : "/etc/nginx/cert/server.key"
-  }
+  },
+
+  "tz" : "Australia/Adelaide"
 }
 
